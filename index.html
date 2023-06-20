@@ -32,11 +32,10 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap"
       rel="stylesheet"
     />
-    <style>
-      body {
-        font-family: "Space Grotesk", sans-serif;
-      }
-    </style>
+   <link rel="stylesheet" type="text/css" href="css/general.css">
+
+    <!-- pagination -->
+    <script src="dom/pagination.min.js"></script>
 
     <script src="api/issue.js"></script>
     <script src="dom/issueDisplay.js"></script>
@@ -52,7 +51,9 @@
         <hr />
       </div>
       <div id="content"></div>
+      <div id="pagination-container"></div>
     </div>
+
     <div id="footer"></div>
     <script>
       $(function () {

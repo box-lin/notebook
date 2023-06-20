@@ -1,0 +1,30 @@
+body {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  margin: 0 5px;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+.paginationjs-next a,
+.paginationjs-prev a {
+  color: #007bff;
+}
+
+.paginationjs-page.active a {
+  color: white;
+  background-color: #007bff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
