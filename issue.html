@@ -23,7 +23,10 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js
+"></script>
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,7 +43,10 @@
 
   <body>
     <div id="header"></div>
-    <div id="content" class="container"></div>
+    <div id="contentBlock" class="container">
+      <div id="contentTitle"></div>
+      <div id="content"></div>
+    </div>
     <div id="footer"></div>
   </body>
 
@@ -48,7 +54,7 @@
     $(function () {
       $("#header").load("header.html");
       $("#footer").load("footer.html");
-      $("#content").css("padding-top", "60px");
+      $("#contentBlock").css("padding-top", "60px");
     });
     var urlParams = new URLSearchParams(window.location.search);
     var issueId = urlParams.get("issueId");
@@ -57,10 +63,16 @@
       url: "https://api.github.com/repos/bboxlin/miniblog/issues/" + issueId,
       method: "GET",
     }).done(function (data) {
+      const converter = new showdown.Converter();
+      const html = converter.makeHtml(data.body);
+
+      const md = window.markdownit();
+      var result = md.render(data.body);
+
+      $("#contentTitle").append(`<hr/><h2>${data.title}</h2><hr/>`);
       var issueDiv = $("<div></div>");
-      issueDiv.append($("<h1></h1>").text(data.title));
-      issueDiv.append($("<p></p>").text(data.body));
-      $("#content").append(issueDiv);
+      issueDiv.append(html);
+      $("#content").append(html);
     });
   </script>
 </html>

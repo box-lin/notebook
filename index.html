@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Notebook</title>
 
     <!-- dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -32,26 +32,33 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap"
       rel="stylesheet"
     />
-   <link rel="stylesheet" type="text/css" href="css/general.css">
-
+    <link rel="stylesheet" type="text/css" href="css/general.css" />
+    <link rel="stylesheet" type="text/css" href="css/pagination.css" />
     <!-- pagination -->
     <script src="dom/pagination.min.js"></script>
 
     <script src="api/issue.js"></script>
     <script src="dom/issueDisplay.js"></script>
+    <script src="dom/sideContent.js"></script>
   </head>
 
   <!-- main -->
   <body>
     <div id="header"></div>
-    <div id="contentBlock" class="container">
-      <div id="contentTitle">
-        <hr />
-        <h2>All Post</h2>
-        <hr />
+    <div id="contentBlock" class="container mt-2">
+      <div class="row">
+        <div id="contentTitle" class="col-md-12 col-lg-9">
+          <hr />
+          <h2 class="d-flex">All Post</h2>
+          <hr />
+          <div id="content"></div>
+        </div>
+        <div id="sideContent" class="col-lg-3">
+        </div>
       </div>
-      <div id="content"></div>
       <div id="pagination-container"></div>
+    </div>
+  
     </div>
 
     <div id="footer"></div>
@@ -72,5 +79,8 @@
       .catch((err) => {
         console.log(err);
       });
+    
+    
+    insertCategorySubContent('sideContent', [])
   </script>
 </html>
