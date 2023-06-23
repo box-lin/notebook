@@ -46,7 +46,11 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown"></div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://bboxlin.github.io/">
+            <a
+              class="nav-link"
+              href="https://bboxlin.github.io/"
+              target="_blank"
+            >
               <img
                 id="appImg"
                 width="24"
@@ -74,18 +78,21 @@
   </nav>
   <script src="api/label.js"></script>
   <script>
-    getLabels("bboxlin", "miniblog")
-      .then((data) => {
-        data.forEach((category) => {
+    const headCategoryInit = async () => {
+      try {
+        const config = await readConfig("./config.yaml");
+        const labels = await getLabels(config.username, config.repo);
+        for (const label of labels) {
           let a = $(
-            `<a class="dropdown-item" href="category.html?category=${category.name}">${category.name}</a>`
+            `<a class="dropdown-item" href="category.html?category=${label.name}">${label.name}</a>`
           );
           $(".dropdown-menu").append(a);
-        });
-      })
-      .catch((err) => {
-        console.log("[Debug] getLabel promise error", err);
-      });
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    headCategoryInit();
   </script>
 </header>
 <style>

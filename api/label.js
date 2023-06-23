@@ -20,10 +20,4 @@ const getLabels = (user, repo) => {
     request.send();
   });
 };
-
-
-const getLabelPerIssue = (user, repo, issueNumber) => {
-
-}
-
  

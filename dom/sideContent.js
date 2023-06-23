@@ -13,7 +13,7 @@ const sideContentInit = async (divId) => {
 const insertAboutMeSideContent = (divId) => {
   let div = $(`#${divId}`);
   const html = `
-  <div class="card  border-info mt-2 mb-4" style="max-width: 18rem;">
+  <div class="card  border-info mt-2 mb-3">
     <img class="card-img-top" src="img/cover.jpeg" alt="Card image cap">
     <div class="card-body text-primary">
         <h5 class="card-title">Boxiang Lin</h5>
@@ -62,7 +62,7 @@ const insertCategorySideContent = (divId, labelArray) => {
                     </a>`;
   }
   const html = `
-    <div class="card border-success mb-3" style="max-width: 18rem;">
+    <div class="card border-success mb-3">
       <div class="card-header">Categories</div>
       <div class="card-body text-success">      
         ${labelHtml}
