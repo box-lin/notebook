@@ -40,3 +40,18 @@ const getIssuesPerLabel = (user, repo, label) => {
     });
   });
 };
+
+const getIssueContent = (user, repo, issueNumber) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: `https://api.github.com/repos/${user}/${repo}/issues/${issueNumber}`,
+      method: "GET",
+      success: function (issue) {
+        resolve(issue);
+      },
+      error: function (error) {
+        reject(error);
+      },
+    });
+  });
+};

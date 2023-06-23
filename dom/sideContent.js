@@ -1,16 +1,9 @@
-// const sideContentInit = (divId, labelArray) => {
-//     insertAboutMeSideContent(divId);
-//     insertLinksSideContent(divId);
-//     insertCategorySideContent(divId, labelArray);
-// }
-
 const sideContentInit = async (divId) => {
   insertAboutMeSideContent(divId);
   insertLinksSideContent(divId);
   try {
     const config = await readConfig("./config.yaml");
     const labels = await getLabels(config.username, config.repo);
-    console.log(labels);
     insertCategorySideContent(divId, labels);
   } catch (err) {
     console.log(err);
