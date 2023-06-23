@@ -1,57 +1,86 @@
+// const sideContentInit = (divId, labelArray) => {
+//     insertAboutMeSideContent(divId);
+//     insertLinksSideContent(divId);
+//     insertCategorySideContent(divId, labelArray);
+// }
 
-const insertAboutMeSubContent = (divId) => {
-    
-}
+const sideContentInit = async (divId) => {
+  insertAboutMeSideContent(divId);
+  insertLinksSideContent(divId);
+  try {
+    const config = await readConfig("./config.yaml");
+    const labels = await getLabels(config.username, config.repo);
+    console.log(labels);
+    insertCategorySideContent(divId, labels);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-const insertCategorySubContent = (divId, labelArray) => {
+const insertAboutMeSideContent = (divId) => {
   let div = $(`#${divId}`);
   const html = `
-        <section id="aside-tags" class="mt-2 mb-4">
-            <div class="card">
-                <div class="card-header">Categories</div>
-              <div class="card-body">      
-                    <a rel="32" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/csharp">
-                        C#
-                    </a>
-                    <a rel="18" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/bash">
-                        bash
-                    </a>
-                    <a rel="17" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/linux">
-                        Linux
-                    </a>
-                    <a rel="16" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/dotnet-core">
-                        .NET Core
-                    </a>
-                    <a rel="14" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/azure">
-                        Azure
-                    </a>
-                    <a rel="14" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/aspdotnet-core">
-                        ASP.NET Core
-                    </a>
-                    <a rel="14" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/ubuntu">
-                        Ubuntu
-                    </a>
-                    <a rel="9" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/dotnet">
-                        .NET
-                    </a>
-                    <a rel="9" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/web">
-                        Web
-                    </a>
-                    <a rel="9" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/powershell">
-                        PowerShell
-                    </a>
-                    <a rel="8" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" href="/tags/windows-server">
-                        Windows Server
-                    </a>
-                    
-                    <hr>
-                    <a class="card-link" href="/tags">
-                        <i class="bi-tag me-1"></i>
-                        全部标签
-                    </a>
-                </div>
-            </div>
-        </section>
+  <div class="card  border-info mt-2 mb-4" style="max-width: 18rem;">
+    <img class="card-img-top" src="../img/cover.jpg" alt="Card image cap">
+    <div class="card-body text-primary">
+        <h5 class="card-title">Boxiang Lin</h5>
+        <p class="card-text">A place to track of my daily learning!</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Software Engineer</li>
+        <li class="list-group-item">Computer Science Major</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="card-link">Github</a>
+        <a href="#" class="card-link">Linkedin</a>
+    </div>
+  </div>`;
+  div.append(html);
+};
+
+const insertLinksSideContent = (divId) => {
+  let div = $(`#${divId}`);
+  const html = `
+    <div class="card border-primary mb-3">
+        <div class="card-header">More links</div>
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="https://teams.microsoft.com/l/chat/0/0?users=xuef@microsoft.com">
+                Leetcode
+            </a>
+            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="https://gitlab.aiursoft.cn/Anduin">
+                Discord
+            </a>
+            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="https://stackoverflow.com/users/8676371/anduin">
+                Wechat
+            </a>
+        </div>
+    </div>
+ 
         `;
+  div.append(html);
+};
+
+const insertCategorySideContent = (divId, labelArray) => {
+  let div = $(`#${divId}`);
+  let labelHtml = "";
+  for (let label of labelArray) {
+    labelHtml += ` <a href="category.html?category=${label.name}" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" >
+                        ${label.name}
+                    </a>`;
+  }
+  const html = `
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+      <div class="card-header">Categories</div>
+      <div class="card-body text-success">      
+        ${labelHtml}
+        <hr>
+        <a class="card-link" href="/tags">
+          <i class="bi-tag me-1"></i>
+          All Category
+        </a>
+      </div>
+    </div>
+  `;
+
   div.append(html);
 };

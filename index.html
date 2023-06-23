@@ -6,7 +6,10 @@
     <title>Notebook</title>
 
     <!-- dependencies -->
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- yaml tool -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -23,7 +26,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,9 +40,12 @@
     <!-- pagination -->
     <script src="dom/pagination.min.js"></script>
 
+    <!-- local js -->
+    <script src="api/config.js"></script>
     <script src="api/issue.js"></script>
     <script src="dom/issueDisplay.js"></script>
     <script src="dom/sideContent.js"></script>
+    <script src="dom/loader.js"></script>
   </head>
 
   <!-- main -->
@@ -52,35 +58,16 @@
           <h2 class="d-flex">All Post</h2>
           <hr />
           <div id="content"></div>
+          <div id="pagination-container"></div>
         </div>
-        <div id="sideContent" class="col-lg-3">
-        </div>
+        <div id="sideContent" class="col-lg-3"></div>
       </div>
-      <div id="pagination-container"></div>
     </div>
-  
-    </div>
-
     <div id="footer"></div>
-    <script>
-      $(function () {
-        $("#header").load("header.html");
-        $("#contentBlock").css("padding-top", "60px");
-        $("#footer").load("footer.html");
-      });
-    </script>
   </body>
-
   <script>
-    getIssues("bboxlin", "miniblog")
-      .then((data) => {
-        insertIssuesToDiv("content", data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    
-    
-    insertCategorySubContent('sideContent', [])
+    basicUILoad();
+    issuesInitHomepage('content')
+    sideContentInit("sideContent", []);
   </script>
 </html>

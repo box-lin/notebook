@@ -21,4 +21,9 @@ const getLabels = (user, repo) => {
   });
 };
 
+
+const getLabelPerIssue = (user, repo, issueNumber) => {
+
+}
+
  
