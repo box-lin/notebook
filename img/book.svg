@@ -1,2 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione" preserveAspectRatio="xMidYMid meet"><path d="M41.2 3.4l-26.1 7.5l-4.1 1.2c-3 .9-3.2 2.6-2.4 5.6l11.3 41.1c.8 3 1.6 3.5 4.7 2.6l4.1-1.2l26.1-7.5c3-.9 4.8-4 4-7.1L48.2 7.4c-.8-3.1-4-4.8-7-4" fill="#3e4347"></path><path d="M39 2.8l-25.8 8.5l-4.1 1.3c-3 1-3.1 2.7-2.2 5.7l13 40.6c1 3 1.8 3.4 4.8 2.4l4.1-1.3l25.8-8.5c3-1 4.7-4.2 3.7-7.2L46.2 6.5c-1-3-4.2-4.6-7.2-3.7" fill="#d0d0d0"></path><path d="M37.1 2.4l-25.5 9.4L28.8 60l25.5-9.4c3-1.1 4.5-4.4 3.4-7.4L44.4 5.7c-1-2.9-4.3-4.4-7.3-3.3" fill="#42ade2"></path><path d="M7.6 13.3c-3 1.1-3 2.8-2 5.8L20 59.2c1.1 3 1.9 3.4 4.9 2.3l4-1.5l-17.3-48.2l-4 1.5" fill="#3e4347"></path><path fill="#ffffff" d="M41.5 21.4l-15.8 5.9l-2.2-6.3l15.8-5.8z"></path></svg>
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 width="800px" height="800px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+<g>
+	<path fill="#F9EBB2" d="M56,62H10c-2.209,0-4-1.791-4-4s1.791-4,4-4h46V62z"/>
+	<g>
+		<path fill="#45AAB8" d="M6,4v49.537C7.062,52.584,8.461,52,10,52h2V2H8C6.896,2,6,2.896,6,4z"/>
+		<path fill="#45AAB8" d="M56,2H14v50h42h2v-2V4C58,2.896,57.104,2,56,2z"/>
+	</g>
+	<g>
+		<path fill="#394240" d="M60,52V4c0-2.211-1.789-4-4-4H8C5.789,0,4,1.789,4,4v54c0,3.313,2.687,6,6,6h49c0.553,0,1-0.447,1-1
+			s-0.447-1-1-1h-1v-8C59.104,54,60,53.104,60,52z M6,4c0-1.104,0.896-2,2-2h4v50h-2c-1.539,0-2.938,0.584-4,1.537V4z M56,62H10
+			c-2.209,0-4-1.791-4-4s1.791-4,4-4h46V62z M56,52H14V2h42c1.104,0,2,0.896,2,2v46v2H56z"/>
+		<path fill="#394240" d="M43,26H23c-0.553,0-1,0.447-1,1s0.447,1,1,1h20c0.553,0,1-0.447,1-1S43.553,26,43,26z"/>
+		<path fill="#394240" d="M49,20H23c-0.553,0-1,0.447-1,1s0.447,1,1,1h26c0.553,0,1-0.447,1-1S49.553,20,49,20z"/>
+		<path fill="#394240" d="M23,16h12c0.553,0,1-0.447,1-1s-0.447-1-1-1H23c-0.553,0-1,0.447-1,1S22.447,16,23,16z"/>
+	</g>
+	<path opacity="0.2" fill="#231F20" d="M6,4v49.537C7.062,52.584,8.461,52,10,52h2V2H8C6.896,2,6,2.896,6,4z"/>
+</g>
+</svg>
