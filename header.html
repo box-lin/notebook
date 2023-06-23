@@ -1,11 +1,14 @@
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-</head>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand mb-1" href="index.html" >  
-        <img src="/img/book.svg" width="30" height="30" class="d-inline-block align-top" alt=""> 
+      <a class="navbar-brand mb-1" href="index.html">
+        <img
+          src="/img/book.svg"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
         Box's Nootbook
       </a>
       <button
@@ -31,14 +34,26 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <img src="/img/category.svg" width="25" height="25" class="d-inline-block align-top" alt=""> 
+              <img
+                src="/img/category.svg"
+                width="25"
+                height="25"
+                class="d-inline-block align-top"
+                alt=""
+              />
               Category
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown"></div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://bboxlin.github.io/">
-               <img src="/img/app.svg" width="24" height="24" class="d-inline-block align-top" alt=""> 
+              <img
+                src="/img/app.svg"
+                width="24"
+                height="24"
+                class="d-inline-block align-top"
+                alt=""
+              />
               Apps <span class="sr-only">(current)</span></a
             >
           </li>
@@ -59,11 +74,6 @@
   </nav>
   <script src="api/label.js"></script>
   <script>
-    function addDarkmodeWidget() {
-      new Darkmode().showWidget();
-    }
-    window.addEventListener("load", addDarkmodeWidget);
-
     getLabels("bboxlin", "miniblog")
       .then((data) => {
         data.forEach((category) => {
