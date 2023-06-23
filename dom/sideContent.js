@@ -14,7 +14,7 @@ const insertAboutMeSideContent = (divId) => {
   let div = $(`#${divId}`);
   const html = `
   <div class="card  border-info mt-2 mb-4" style="max-width: 18rem;">
-    <img class="card-img-top" src="../img/cover.jpg" alt="Card image cap">
+    <img class="card-img-top" src="../img/cover.jpeg" alt="Card image cap">
     <div class="card-body text-primary">
         <h5 class="card-title">Boxiang Lin</h5>
         <p class="card-text">A place to track of my daily learning!</p>
