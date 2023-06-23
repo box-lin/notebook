@@ -24,7 +24,7 @@ const insertAboutMeSideContent = (divId) => {
         <li class="list-group-item">Computer Science Major</li>
     </ul>
     <div class="card-body">
-        <a href="#" class="card-link">Github</a>
+        <a href="https://github.com/bboxlin" class="card-link">Github</a>
         <a href="#" class="card-link">Linkedin</a>
     </div>
   </div>`;
@@ -37,13 +37,13 @@ const insertLinksSideContent = (divId) => {
     <div class="card border-primary mb-3">
         <div class="card-header">More links</div>
         <div class="list-group list-group-flush">
-            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="https://teams.microsoft.com/l/chat/0/0?users=xuef@microsoft.com">
+            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="#">
                 Leetcode
             </a>
-            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="https://gitlab.aiursoft.cn/Anduin">
+            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="#">
                 Discord
             </a>
-            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="https://stackoverflow.com/users/8676371/anduin">
+            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="#">
                 Wechat
             </a>
         </div>
@@ -67,7 +67,7 @@ const insertCategorySideContent = (divId, labelArray) => {
       <div class="card-body text-success">      
         ${labelHtml}
         <hr>
-        <a class="card-link" href="/tags">
+        <a class="card-link" href="index.html">
           <i class="bi-tag me-1"></i>
           All Category
         </a>
