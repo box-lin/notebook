@@ -1,9 +1,9 @@
 const basicUILoad = () => {
   $("#header").load("header.html", function () {
     // load images in
-    $("#headImg").attr("src", "/img/bookIcon.svg");
-    $("#categoryImg").attr("src", "/img/catIcon.svg");
-    $("#appImg").attr("src", "/img/appIcon.svg");
+    $("#headImg").attr("src", "img/bookIcon.svg");
+    $("#categoryImg").attr("src", "img/catIcon.svg");
+    $("#appImg").attr("src", "img/appIcon.svg");
     console.log("Header loaded successfully.");
   });
   $("#contentBlock").css("padding-top", "60px");
