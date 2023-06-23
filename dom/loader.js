@@ -1,7 +1,7 @@
 const basicUILoad = () => {
   $("#header").load("header.html", function () {
     // load images in
-    $("#headImg").attr("src", "/img/book.svg");
+    $("#headImg").attr("src", "/img/icon.svg");
     $("#categoryImg").attr("src", "/img/category.svg");
     $("#appImg").attr("src", "/img/app.svg");
     console.log("Header loaded successfully.");
