@@ -1,3 +1,7 @@
+/**
+ * Issue content page.
+ * @param {*} divId
+ */
 const issuePage = async (divId) => {
   try {
     const urlParams = new URLSearchParams(window.location.search);
@@ -9,19 +13,17 @@ const issuePage = async (divId) => {
       issueNumber
     );
 
-    let labelTag = "";
-    for (const label of issue.labels) {
-      labelTag += ` <a href="category.html?category=${label.name}" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" >
-                        ${label.name}
-                    </a>`;
-    }
     // title
     $("#contentTitle").prepend(
       `<hr/>
         <h2 class="d-flex">${issue.title}</h2>
         <p>Date: ${new Date(issue.updated_at).toISOString().substring(0, 10)}
            <br>
-           Tags: ${getIssueLabelTagsHTML(issue)}
+           <br>
+           Category:  
+           <br>
+           <br>
+           Labels: ${getIssueLabelTagsHTML(issue)}
         </p>
 
        <hr/>
@@ -39,6 +41,10 @@ const issuePage = async (divId) => {
   }
 };
 
+/**
+ * Issues index page.
+ * @param {*} divId
+ */
 const issuesInitHomepage = async (divId) => {
   try {
     const config = await readConfig("./config.yaml");
@@ -49,18 +55,53 @@ const issuesInitHomepage = async (divId) => {
   }
 };
 
+/**
+ *
+ * @param {*} divId
+ */
 const issuesInitCategoryPage = async (divId) => {
   try {
-    var urlParams = new URLSearchParams(window.location.search);
-    var categoryName = urlParams.get("category");
+    const urlParams = new URLSearchParams(window.location.search);
+    const milestoneTitle = urlParams.get("category");
+    const milestoneNumber = urlParams.get("number");
     $("#contentTitle").prepend(
-      `<hr/><h2 class="d-flex">${categoryName}</h2><hr/>`
+      `<hr/>
+        <h2 class="d-flex"> ${milestoneTitle}  </h2> 
+          <footer class="blockquote-footer"> Category </footer>
+       <hr/>`
+    );
+    const config = await readConfig("./config.yaml");
+    const issues = await getIssuesPerMilestone(
+      config.username,
+      config.repo,
+      milestoneNumber
+    );
+    insertIssuesToDiv(divId, issues);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+/**
+/**
+ * issue on label page.
+ * @param {*} divId 
+ */
+const issuesInitLabelPage = async (divId) => {
+  try {
+    var urlParams = new URLSearchParams(window.location.search);
+    var labelName = urlParams.get("label");
+    $("#contentTitle").prepend(
+      `<hr/>
+        <h2 class="d-flex"> ${labelName}  </h2> 
+          <footer class="blockquote-footer"> Label </footer>
+       <hr/>`
     );
     const config = await readConfig("./config.yaml");
     const issues = await getIssuesPerLabel(
       config.username,
       config.repo,
-      categoryName
+      labelName
     );
     insertIssuesToDiv(divId, issues);
   } catch (err) {
@@ -113,7 +154,7 @@ const insertIssuesToDiv = (divId, issues) => {
 const getIssueLabelTagsHTML = (issue) => {
   let labelTag = "";
   for (const label of issue.labels) {
-    labelTag += ` <a href="category.html?category=${label.name}" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" >
+    labelTag += ` <a href="label.html?label=${label.name}" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" >
                         ${label.name}
                     </a>`;
   }

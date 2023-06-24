@@ -43,7 +43,36 @@
               />
               Category
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown"></div>
+            <div
+              id="catDropDownMenu"
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdown"
+            ></div>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img
+                id="labelImg"
+                width="25"
+                height="25"
+                class="d-inline-block align-top"
+                alt=""
+              />
+              Label
+            </a>
+            <div
+              id="labelDropDownMenu"
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdown"
+            ></div>
           </li>
           <li class="nav-item">
             <a
@@ -76,23 +105,39 @@
       </div>
     </div>
   </nav>
-  <script src="api/label.js"></script>
+
   <script>
-    const headCategoryInit = async () => {
+    const headLabelsInit = async () => {
       try {
         const config = await readConfig("./config.yaml");
         const labels = await getLabels(config.username, config.repo);
         for (const label of labels) {
           let a = $(
-            `<a class="dropdown-item" href="category.html?category=${label.name}">${label.name}</a>`
+            `<a class="dropdown-item" href="label.html?label=${label.name}">${label.name}</a>`
           );
-          $(".dropdown-menu").append(a);
+          $("#labelDropDownMenu").append(a);
         }
       } catch (err) {
         console.log(err);
       }
     };
-    headCategoryInit();
+
+    const headCategoriesInit = async () => {
+      try {
+        const config = await readConfig("./config.yaml");
+        const cats = await getCategories(config.username, config.repo);
+        for (const cat of cats) {
+          let a = $(
+            `<a class="dropdown-item" href="category.html?category=${cat.title}&number=${cat.number}">${cat.title}</a>`
+          );
+          $("#catDropDownMenu").append(a);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    headLabelsInit();
+    headCategoriesInit();
   </script>
 </header>
 <style>

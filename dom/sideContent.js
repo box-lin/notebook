@@ -1,10 +1,12 @@
 const sideContentInit = async (divId) => {
   insertAboutMeSideContent(divId);
-  insertLinksSideContent(divId);
+
   try {
     const config = await readConfig("./config.yaml");
     const labels = await getLabels(config.username, config.repo);
-    insertCategorySideContent(divId, labels);
+    const cats = await getCategories(config.username, config.repo);
+    insertCategorySideContent(divId, cats);
+    insertLabelSideContent(divId, labels);
   } catch (err) {
     console.log(err);
   }
@@ -31,21 +33,19 @@ const insertAboutMeSideContent = (divId) => {
   div.append(html);
 };
 
-const insertLinksSideContent = (divId) => {
+const insertCategorySideContent = (divId, catArray) => {
   let div = $(`#${divId}`);
+  let catHtml = "";
+  for (let cat of catArray) {
+    catHtml += `<a class="d-block mb-2" href="category.html?category=${cat.title}&number=${cat.number}">
+                 ${cat.title}
+                </a>`;
+  }
   const html = `
     <div class="card border-primary mb-3">
-        <div class="card-header">More links</div>
-        <div class="list-group list-group-flush">
-            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="#">
-                Leetcode
-            </a>
-            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="#">
-                Discord
-            </a>
-            <a class="list-group-item list-group-item-action" target="_blank" title="Default Category" href="#">
-                Wechat
-            </a>
+      <div class="card-header">Categories</div>
+        <div class="card-body text-success">      
+          ${catHtml}
         </div>
     </div>
  
@@ -53,23 +53,23 @@ const insertLinksSideContent = (divId) => {
   div.append(html);
 };
 
-const insertCategorySideContent = (divId, labelArray) => {
+const insertLabelSideContent = (divId, labelArray) => {
   let div = $(`#${divId}`);
   let labelHtml = "";
   for (let label of labelArray) {
-    labelHtml += ` <a href="category.html?category=${label.name}" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" >
+    labelHtml += ` <a href="label.html?label=${label.name}" class="d-inline-block btn btn-sm mb-2 me-1 btn-accent bg-primary text-white" >
                         ${label.name}
                     </a>`;
   }
   const html = `
     <div class="card border-success mb-3">
-      <div class="card-header">Categories</div>
+      <div class="card-header">Labels</div>
       <div class="card-body text-success">      
         ${labelHtml}
         <hr>
         <a class="card-link" href="index.html">
           <i class="bi-tag me-1"></i>
-          All Category
+          All Labels
         </a>
       </div>
     </div>

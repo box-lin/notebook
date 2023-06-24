@@ -3,6 +3,7 @@ const basicUILoad = () => {
     // load images in
     $("#headImg").attr("src", "img/bookIcon.svg");
     $("#categoryImg").attr("src", "img/catIcon.svg");
+    $("#labelImg").attr("src", "img/labelIcon.svg");
     $("#appImg").attr("src", "img/appIcon.svg");
     console.log("Header loaded successfully.");
   });

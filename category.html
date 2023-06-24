@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notebook | Category</title>
-    <link rel="icon" href="img/bookIcon.svg">
+    <title>Notebook | Category </title>
+    <link rel="icon" href="img/bookIcon.svg" />
     <!-- dependencies -->
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -40,6 +40,8 @@
     <script src="dom/pagination.min.js"></script>
 
     <!-- local js -->
+    <script src="api/label.js"></script>
+    <script src="api/category.js"></script>
     <script src="api/config.js"></script>
     <script src="api/issue.js"></script>
     <script src="dom/issueDisplay.js"></script>
@@ -64,6 +66,6 @@
   <script>
     basicUILoad();
     issuesInitCategoryPage("content");
-    sideContentInit("sideContent", []);
+    sideContentInit("sideContent");
   </script>
 </html>

@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notebook | Content</title>
-    <link rel="icon" href="img/bookIcon.svg">
-
+    <title>Notebook | label</title>
+    <link rel="icon" href="img/bookIcon.svg" />
     <!-- dependencies -->
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- yaml tool -->
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <link
       rel="stylesheet"
@@ -25,13 +26,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
-    <!-- markdown render -->
-    <link
-      rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"
-    />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -41,26 +35,37 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="css/general.css" />
+    <link rel="stylesheet" type="text/css" href="css/pagination.css" />
+    <!-- pagination -->
+    <script src="dom/pagination.min.js"></script>
 
+    <!-- local js -->
     <script src="api/label.js"></script>
     <script src="api/category.js"></script>
     <script src="api/config.js"></script>
     <script src="api/issue.js"></script>
     <script src="dom/issueDisplay.js"></script>
+    <script src="dom/sideContent.js"></script>
     <script src="dom/loader.js"></script>
   </head>
 
   <body>
     <div id="header"></div>
-    <div id="contentBlock" class="container">
-      <div id="contentTitle"></div>
-      <div id="content"></div>
+    <div id="contentBlock" class="container mt-2">
+      <div class="row">
+        <div id="contentTitle" class="col-md-12 col-lg-9">
+          <div id="content"></div>
+          <div id="pagination-container"></div>
+        </div>
+        <div id="sideContent" class="col-lg-3"></div>
+      </div>
     </div>
     <div id="footer"></div>
   </body>
 
   <script>
     basicUILoad();
-    issuePage("content");
+    issuesInitLabelPage("content");
+    sideContentInit("sideContent");
   </script>
 </html>
