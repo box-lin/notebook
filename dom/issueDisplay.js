@@ -98,6 +98,16 @@ const issuesInitLabelPage = async (divId) => {
        <hr/>`
     );
     const config = await readConfig("./config.yaml");
+
+    // show all labels
+    if (labelName === "all") {
+      const labels = await getLabels(config.username, config.repo);
+      insertAllLabelTabsToDiv(divId, labels);
+      return;
+    }
+
+    // show all issue with that labels.
+
     const issues = await getIssuesPerLabel(
       config.username,
       config.repo,
@@ -109,13 +119,51 @@ const issuesInitLabelPage = async (divId) => {
   }
 };
 
+const insertAllLabelTabsToDiv = (divId, labels) => {
+  let div = $(`#${divId}`);
+  const html = `
+    <ul class="list-unstyled ul-tags">
+        <li class="d-inline-block mb-2 me-2">
+            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
+                Azure Media Player
+            </a>
+        </li>
+           <li class="d-inline-block mb-2 me-2">
+            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
+                Azure Media Player
+            </a>
+        </li>
+           <li class="d-inline-block mb-2 me-2">
+            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
+                Azure Media Player
+            </a>
+        </li>
+           <li class="d-inline-block mb-2 me-2">
+            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
+                Azure Media Player
+            </a>
+        </li>
+           <li class="d-inline-block mb-2 me-2">
+            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
+                Azure Media Player
+            </a>
+        </li>
+           <li class="d-inline-block mb-2 me-2">
+            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
+                Azure Media Player
+            </a>
+        </li>
+    </ul>
+  `;
+  div.append(html);
+};
+
 /**
  *
  * @param {*} divId
  * @param {*} issues
  */
 const insertIssuesToDiv = (divId, issues) => {
-  // Ensure the DOM is fully loaded before proceeding
   let div = $(`#${divId}`);
   // Add a separate div for the pagination controls
   $("#pagination-container").pagination({
