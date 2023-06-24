@@ -3,6 +3,7 @@ const sideContentInit = async (divId) => {
 
   try {
     const config = await readConfig("./config.yaml");
+    // not to show all labels... just a few, perhaps, 8.
     const labels = await getLabels(config.username, config.repo);
     const cats = await getCategories(config.username, config.repo);
     insertCategorySideContent(divId, cats);
@@ -54,6 +55,8 @@ const insertCategorySideContent = (divId, catArray) => {
 };
 
 const insertLabelSideContent = (divId, labelArray) => {
+  shuffleArray(labelArray);
+  labelArray = labelArray.slice(0, 8);
   let div = $(`#${divId}`);
   let labelHtml = "";
   for (let label of labelArray) {
@@ -67,7 +70,7 @@ const insertLabelSideContent = (divId, labelArray) => {
       <div class="card-body text-success">      
         ${labelHtml}
         <hr>
-        <a class="card-link" href="index.html">
+        <a class="card-link" href="label.html?label=all">
           <i class="bi-tag me-1"></i>
           All Labels
         </a>
@@ -77,3 +80,13 @@ const insertLabelSideContent = (divId, labelArray) => {
 
   div.append(html);
 };
+
+
+
+// helper
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}

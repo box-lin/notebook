@@ -121,38 +121,18 @@ const issuesInitLabelPage = async (divId) => {
 
 const insertAllLabelTabsToDiv = (divId, labels) => {
   let div = $(`#${divId}`);
+  let labelHtml = "";
+  for (const label of labels) {
+    labelHtml += `
+       <li class="d-inline-block mb-2 me-2">
+        <a class="btn btn-sm btn-outline-secondary" href="label.html?label=${label.name}">
+            ${label.name}
+        </a>
+    </li>`;
+  }
   const html = `
     <ul class="list-unstyled ul-tags">
-        <li class="d-inline-block mb-2 me-2">
-            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
-                Azure Media Player
-            </a>
-        </li>
-           <li class="d-inline-block mb-2 me-2">
-            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
-                Azure Media Player
-            </a>
-        </li>
-           <li class="d-inline-block mb-2 me-2">
-            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
-                Azure Media Player
-            </a>
-        </li>
-           <li class="d-inline-block mb-2 me-2">
-            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
-                Azure Media Player
-            </a>
-        </li>
-           <li class="d-inline-block mb-2 me-2">
-            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
-                Azure Media Player
-            </a>
-        </li>
-           <li class="d-inline-block mb-2 me-2">
-            <a class="btn btn-sm btn-outline-secondary" title="3" href="/tags/azure-media-player">
-                Azure Media Player
-            </a>
-        </li>
+        ${labelHtml}
     </ul>
   `;
   div.append(html);
