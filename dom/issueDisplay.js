@@ -20,7 +20,7 @@ const issuePage = async (divId) => {
         <p>Date: ${new Date(issue.updated_at).toISOString().substring(0, 10)}
            <br>
            <br>
-           Category:  
+           Category: ${getIssueCategoryHTML(issue)}
            <br>
            <br>
            Labels: ${getIssueLabelTagsHTML(issue)}
@@ -187,4 +187,10 @@ const getIssueLabelTagsHTML = (issue) => {
                     </a>`;
   }
   return labelTag;
+};
+
+const getIssueCategoryHTML = (issue) => {
+  return `<a href="category.html?category=${issue.milestone.title}&number=${issue.milestone.number}">
+                 ${issue.milestone.title}
+                </a>`;
 };
