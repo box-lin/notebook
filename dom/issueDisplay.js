@@ -64,10 +64,13 @@ const issuesInitCategoryPage = async (divId) => {
     const urlParams = new URLSearchParams(window.location.search);
     const milestoneTitle = urlParams.get("category");
     const milestoneNumber = urlParams.get("number");
+    const tagDivId = "catTagDiv";
     $("#contentTitle").prepend(
       `<hr/>
         <h2 class="d-flex"> ${milestoneTitle}  </h2> 
           <footer class="blockquote-footer"> Category </footer>
+          <br>
+          <div id=${tagDivId}></div>
        <hr/>`
     );
     const config = await readConfig("./config.yaml");
@@ -76,6 +79,22 @@ const issuesInitCategoryPage = async (divId) => {
       config.repo,
       milestoneNumber
     );
+
+    // add all issues's label into div id = "catTagDiv"
+    const collectedLabels = [];
+    for (const issue of issues) {
+      for (const label of issue.labels) {
+        // not add duplicates..
+        if (
+          !collectedLabels.some(
+            (collectedLabel) => collectedLabel.name === label.name
+          )
+        ) {
+          collectedLabels.push(label);
+        }
+      }
+    }
+    insertAllLabelTabsToDiv(tagDivId, collectedLabels);
     insertIssuesToDiv(divId, issues);
   } catch (err) {
     console.log(err);
