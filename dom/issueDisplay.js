@@ -60,19 +60,19 @@ const issuesInitHomepage = async (divId) => {
  * @param {*} divId
  */
 const issuesInitCategoryPage = async (divId) => {
-  try {
-    const urlParams = new URLSearchParams(window.location.search);
-    const milestoneTitle = urlParams.get("category");
-    const milestoneNumber = urlParams.get("number");
-    const tagDivId = "catTagDiv";
-    $("#contentTitle").prepend(
-      `<hr/>
+  const urlParams = new URLSearchParams(window.location.search);
+  const milestoneTitle = urlParams.get("category");
+  const milestoneNumber = urlParams.get("number");
+  const tagDivId = "catTagDiv";
+  $("#contentTitle").prepend(
+    `<hr/>
         <h2 class="d-flex"> ${milestoneTitle}  </h2> 
           <footer class="blockquote-footer"> Category </footer>
           <br>
           <div id=${tagDivId}></div>
        <hr/>`
-    );
+  );
+  try {
     const config = await readConfig("./config.yaml");
     const issues = await getIssuesPerMilestone(
       config.username,
@@ -164,8 +164,12 @@ const insertAllLabelTabsToDiv = (divId, labels) => {
  */
 const insertIssuesToDiv = (divId, issues) => {
   let div = $(`#${divId}`);
-  // Add a separate div for the pagination controls
-  $("#pagination-container").pagination({
+  let paginationDiv = $("#pagination-container");
+  insertIssuesToDivInstance(div, paginationDiv, issues);
+};
+
+const insertIssuesToDivInstance = (div, paginationDiv, issues) => {
+  paginationDiv.pagination({
     dataSource: issues, // use your issues array as the data source
     pageSize: 4, // number of items per page
     callback: function (issuesOnPage, pagination) {
