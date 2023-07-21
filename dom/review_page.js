@@ -95,30 +95,6 @@ let reviewPage = window.reviewPage || {};
         let displayIssues = shuffleAndPickIssues(issues, cnt);
         insertIssuesToDivInstance(issueDiv, paginationDiv, displayIssues);
       });
-
-      numberInputField.change(async function () {
-        const selectedOptionValue = $(this).val();
-        const cnt = numberInputField.val();
-        const issues = await getIssuesHelper(selectedOptionValue);
-        let displayIssues = shuffleAndPickIssues(issues, cnt);
-        insertIssuesToDivInstance(issueDiv, paginationDiv, displayIssues);
-      });
-
-      decreButton.on("click", async function () {
-        const selectedOptionValue = $(this).val();
-        const cnt = numberInputField.val();
-        const issues = await getIssuesHelper(selectedOptionValue);
-        let displayIssues = shuffleAndPickIssues(issues, cnt);
-        insertIssuesToDivInstance(issueDiv, paginationDiv, displayIssues);
-      });
-
-      increButton.on("click", async function () {
-        const selectedOptionValue = $(this).val();
-        const cnt = numberInputField.val();
-        const issues = await getIssuesHelper(selectedOptionValue);
-        let displayIssues = shuffleAndPickIssues(issues, cnt);
-        insertIssuesToDivInstance(issueDiv, paginationDiv, displayIssues);
-      });
     } catch (err) {
       console.log(err);
     }
